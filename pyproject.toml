@@ -1,0 +1,35 @@
+[project]
+name = "clinic-campaign-builder"
+version = "0.1.0"
+description = "Reads clinic actuals from InfinityDB, compares to a Google-Sheet budget, and drafts a weekly Instagram + LinkedIn campaign when revenue lands >=10% below target."
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "pyyaml>=6.0",
+    "gspread>=6.1",
+    "google-auth>=2.30",
+    "anthropic>=0.39",
+    "python-dotenv>=1.0",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+clinic-campaign = "src.main:cli"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

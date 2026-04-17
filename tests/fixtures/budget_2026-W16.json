@@ -1,0 +1,26 @@
+[
+  {
+    "doctor_id": "doc_smith",
+    "doctor_name": "Dr. Smith",
+    "week": "2026-W16",
+    "target_patients": 50,
+    "target_avg_revenue": 200,
+    "target_revenue": 10000
+  },
+  {
+    "doctor_id": "doc_jones",
+    "doctor_name": "Dr. Jones",
+    "week": "2026-W16",
+    "target_patients": 60,
+    "target_avg_revenue": 200,
+    "target_revenue": 12000
+  },
+  {
+    "doctor_id": "doc_lee",
+    "doctor_name": "Dr. Lee",
+    "week": "2026-W16",
+    "target_patients": 55,
+    "target_avg_revenue": 210,
+    "target_revenue": 11550
+  }
+]

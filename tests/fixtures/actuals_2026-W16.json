@@ -1,0 +1,26 @@
+{
+  "doc_smith": {
+    "doctor_name": "Dr. Smith",
+    "patients": 40,
+    "avg_revenue_per_patient": 180.0,
+    "cash_patients": 10,
+    "insurance_patients": 30,
+    "revenue": 7200.0
+  },
+  "doc_jones": {
+    "doctor_name": "Dr. Jones",
+    "patients": 60,
+    "avg_revenue_per_patient": 200.0,
+    "cash_patients": 20,
+    "insurance_patients": 40,
+    "revenue": 12000.0
+  },
+  "doc_lee": {
+    "doctor_name": "Dr. Lee",
+    "patients": 55,
+    "avg_revenue_per_patient": 210.0,
+    "cash_patients": 25,
+    "insurance_patients": 30,
+    "revenue": 11550.0
+  }
+}

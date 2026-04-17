@@ -1,0 +1,37 @@
+clinic:
+  name: "Acme Family Clinic"
+  services:
+    - "General dentistry"
+    - "Cosmetic dentistry"
+    - "Orthodontics"
+    - "Emergency visits"
+  tone: "warm, professional, community-oriented"
+  location: "Austin, TX"
+
+infinitydb:
+  base_url_env: INFINITYDB_BASE_URL
+  database_env: INFINITYDB_DATABASE
+  user_env: INFINITYDB_USER
+  password_env: INFINITYDB_PASSWORD
+  # Path template resolved per run. {week} is replaced with ISO week e.g. 2026-W16.
+  # Expected JSON shape at this path is a dict keyed by doctor_id with fields
+  # {doctor_name, patients, avg_revenue_per_patient, cash_patients, insurance_patients, revenue}.
+  actuals_path_template: "clinic/weekly/{week}"
+
+budget:
+  sheet_id_env: BUDGET_SHEET_ID
+  worksheet: "Weekly Budget"
+  # Expected columns (case-insensitive): doctor_id, doctor_name, week,
+  # target_patients, target_avg_revenue, target_revenue.
+
+shortfall:
+  threshold_pct: 10.0
+
+channels:
+  - instagram
+  - linkedin
+
+campaign:
+  model: "claude-sonnet-4-6"
+  instagram_posts_per_week: 3
+  linkedin_posts_per_week: 2
