@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 import logging
 import sys
 from datetime import date
@@ -21,6 +22,14 @@ log = logging.getLogger("main")
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Weekly competitor Instagram report")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Scrape and analyze, but write report to report.html instead of emailing.",
+    )
+    args = parser.parse_args()
+
     config_path = Path(__file__).resolve().parent.parent / "config.yaml"
     config = yaml.safe_load(config_path.read_text())
 
@@ -40,8 +49,20 @@ def main() -> int:
         log.warning("No posts scraped. Instagram may be blocking unauthenticated access.")
 
     result = analyze(scraped, lookback_days)
-
     subject = f"Competitor Instagram Brief — week of {date.today().isoformat()}"
+
+    if args.dry_run:
+        out_path = Path(__file__).resolve().parent.parent / "report.html"
+        out_path.write_text(result.html_report, encoding="utf-8")
+        log.info("DRY RUN — would send to %s", recipient)
+        log.info("DRY RUN — subject: %s", subject)
+        log.info("DRY RUN — HTML written to %s", out_path)
+        print("\n--- PLAIN SUMMARY ---")
+        print(result.plain_summary)
+        print("\n--- HTML REPORT ---")
+        print(result.html_report)
+        return 0
+
     send_report(
         to_email=recipient,
         subject=subject,

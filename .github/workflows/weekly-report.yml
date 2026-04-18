@@ -4,7 +4,12 @@ on:
   schedule:
     # Every Monday 06:00 UTC (09:00 Bahrain time)
     - cron: "0 6 * * 1"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (do not send email, upload HTML as artifact)"
+        type: boolean
+        default: false
 
 jobs:
   report:
@@ -28,4 +33,17 @@ jobs:
           GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
           GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
           GMAIL_SENDER_EMAIL: ${{ secrets.GMAIL_SENDER_EMAIL }}
-        run: python -m src.main
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m src.main --dry-run
+          else
+            python -m src.main
+          fi
+
+      - name: Upload dry-run report
+        if: ${{ inputs.dry_run == true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: competitor-report-html
+          path: report.html
+          if-no-files-found: error

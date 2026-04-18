@@ -85,6 +85,8 @@ the helper if it ever stops working) to make the token permanent.
 ## Running it
 
 **Manually on demand:** Actions tab → "Weekly Competitor Report" → Run workflow.
+Toggle the `dry_run` checkbox to preview without sending — the rendered HTML is
+attached to the run as an artifact (`competitor-report-html`).
 
 **Weekly automatic:** Already scheduled for Monday 06:00 UTC (09:00 Bahrain).
 Edit the cron in `.github/workflows/weekly-report.yml` to change.
@@ -94,6 +96,10 @@ Edit the cron in `.github/workflows/weekly-report.yml` to change.
 ```bash
 pip install -r requirements.txt
 export ANTHROPIC_API_KEY=...
+# Dry run: skips email, writes report.html, prints output
+python -m src.main --dry-run
+
+# Real run: also needs the Gmail secrets
 export GMAIL_CLIENT_ID=...
 export GMAIL_CLIENT_SECRET=...
 export GMAIL_REFRESH_TOKEN=...
