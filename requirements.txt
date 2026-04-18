@@ -1,0 +1,6 @@
+instaloader>=4.13
+anthropic>=0.40.0
+google-auth>=2.35.0
+google-auth-oauthlib>=1.2.1
+google-api-python-client>=2.150.0
+PyYAML>=6.0.2

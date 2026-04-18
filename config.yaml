@@ -1,0 +1,14 @@
+recipient_email: ceo@alsalam.care
+sender_name: Al Salam Competitor Intelligence
+lookback_days: 7
+max_posts_per_competitor: 30
+
+competitors:
+  - name: Ibn Al Nafees
+    username: ibnalnafees
+  - name: Kindi Hospital
+    username: alkindihospital
+  - name: American Mission Hospital
+    username: american_mission_hospital
+  - name: Royal Bahrain Hospital
+    username: royalbahrainhospital
