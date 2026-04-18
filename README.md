@@ -1,6 +1,6 @@
 # Instagram Competitor Analyzer
 
-Weekly agent that scrapes public Instagram activity from listed competitors, uses Claude
+Weekly agent for Al Salam that scrapes public Instagram activity from listed competitors, uses Claude
 to summarize what they're offering and which posts performed best, and emails the briefing
 to the CEO. Runs on GitHub Actions — weekly on schedule or manually on demand.
 
