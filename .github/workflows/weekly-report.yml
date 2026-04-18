@@ -1,5 +1,7 @@
 name: Weekly Competitor Report
 
+# Runs weekly or on demand. Toggle dry_run to preview without emailing.
+
 on:
   schedule:
     # Every Monday 06:00 UTC (09:00 Bahrain time)
